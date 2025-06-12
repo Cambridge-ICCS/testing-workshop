@@ -1,0 +1,5 @@
+# Solar Constant: amount of energy the Earth receives from the Sun every second per square metre 
+solar_constant: 1370
+
+# Mean radius of the Earth in metres
+mean_radius: 6.371e3
