@@ -1,11 +1,17 @@
 from typing import Annotated
 from math import pi
 import numpy as np
+import yaml
+import io
 
 ## Constants
+solar_constant : Annotated[float, "J s^-1 m^-2"] = None
 
-# Solar Constant: amount of energy the Earth receives from the Sun every second per square metre 
-solar_constant : Annotated[float, "J s^-1 m^-2"] = 1370.0
+def init():
+  with open("data.yaml", 'r') as stream:
+    data_loaded = yaml.safe_load(stream)
+    # Solar Constant: amount of energy the Earth receives from the Sun every second per square metre 
+    solar_constant = data_loaded["solar_constant"]
 
 # Stefan-Boltzmann's constant
 sigma : Annotated[float, "J s^-1 m^-2 K^-4"] = 5.67e-8
