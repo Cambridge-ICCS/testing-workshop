@@ -1,26 +1,28 @@
 from typing import Annotated
 from math import pi
-import numpy as np
+from helpers import linspace, square
 import yaml
-import io
+"""
+    Energy balance calculations for the Earth system.
+    This module provides functions to calculate the energy balance
+    based on the Earth's albedo, emissivity, and temperature.
+"""
 
 ## Constants
-solar_constant : Annotated[float, "J s^-1 m^-2"] = None
+solar_constant     : Annotated[float, "J s^-1 m^-2"]      = None
+mean_radius        : Annotated[float, "m"]                = None
+# Stefan-Boltzmann's constant
+sigma              : Annotated[float, "J s^-1 m^-2 K^-4"] = 5.67e-8
 
 def init():
-  with open("data.yaml", 'r') as stream:
+  with open("parameters.yaml", 'r') as stream:
     data_loaded = yaml.safe_load(stream)
-    # Solar Constant: amount of energy the Earth receives from the Sun every second per square metre 
-    solar_constant = data_loaded["solar_constant"]
-
-# Stefan-Boltzmann's constant
-sigma : Annotated[float, "J s^-1 m^-2 K^-4"] = 5.67e-8
-
-# (Mean) radius of the Earth
-earth_radius : Annotated[float, "m"] = 6.371e3
+    global solar_constant
+    global mean_radius
+    solar_constant     = float(data_loaded["solar_constant"])
+    mean_radius        = float(data_loaded["mean_radius"])
 
 ## Energy balance calculations
-
 def energy_in(albedo : float) -> Annotated[float, "J / s"]:
     """
         Calculate the incoming energy from the sun 
@@ -34,7 +36,7 @@ def energy_in(albedo : float) -> Annotated[float, "J / s"]:
     if albedo < 0 or albedo > 1:
         raise ValueError("Albedo must be between 0 and 1")
         
-    illuminated_surface_area = pi * earth_radius**2  
+    illuminated_surface_area = pi * square(mean_radius)
     return (solar_constant * illuminated_surface_area * (1 - albedo))
 
 def energy_out(temperature : Annotated[float, "K"]) -> Annotated[float, "J / s"]:
@@ -48,7 +50,7 @@ def energy_out(temperature : Annotated[float, "K"]) -> Annotated[float, "J / s"]
         Output:
         - float, the outgoing energy in watts (J / s)
     """
-    emmiting_surface_area = 4 * pi * earth_radius**2
+    emmiting_surface_area = 4 * pi * square(mean_radius)
     return (sigma * temperature**4 * emmiting_surface_area)
 
 def temperature_of_balanced_system(albedo: float) -> Annotated[float, "K"]:
@@ -62,8 +64,7 @@ def temperature_of_balanced_system(albedo: float) -> Annotated[float, "K"]:
         - float, the temperature in Kelvin
     """
     incoming_energy = energy_in(albedo)
-    return ((incoming_energy / (sigma * 4 * pi * earth_radius**2)) ** 0.25)
-
+    return ((incoming_energy / (sigma * 4 * pi * mean_radius**2)) ** 0.25)
 
 def earth_emissivity(albedo: float, temperature: Annotated[float, "K"]) -> float:
     """
@@ -108,7 +109,7 @@ def plot_temperature_vs_emissivity():
         for a fixed albedo.
     """
     import matplotlib.pyplot as plt
-    epsilon_var = np.linspace(0.5, 0.7, 50)
+    epsilon_var = linspace(0.5, 0.7, 50)
     albedo = 0.3
 
     temperatures = kelvin_to_celsius(temperature_at_energy_balance(albedo, epsilon_var))
@@ -126,7 +127,7 @@ def plot_temperature_vs_albedo():
         for a fixed emissivity.
     """
     import matplotlib.pyplot as plt
-    albedo_var = np.linspace(0.294, 0.286, 50)
+    albedo_var = linspace(0.294, 0.286, 50)
     emissivity = 0.614618
 
     temperatures = kelvin_to_celsius(temperature_at_energy_balance(albedo_var, emissivity))
@@ -139,5 +140,3 @@ def plot_temperature_vs_albedo():
     plt.title('Temperature vs Albedo at Emissivity = {}'.format(emissivity))
     plt.grid()
     plt.show()
-
-plot_temperature_vs_albedo()
