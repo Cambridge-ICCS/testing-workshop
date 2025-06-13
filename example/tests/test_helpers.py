@@ -6,7 +6,7 @@ def test_square():
     assert square(0) == 0
     assert square(1) == 1
     assert square(4) == 16
-    assert square(-1) == 1
+    assert square(-3) == 9
     assert isnan(square(nan))
 
 def test_inv():
