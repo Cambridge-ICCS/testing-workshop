@@ -1,4 +1,8 @@
-# Setup instructions
+# Testing workshop examples 
+
+This is an example used for live demos and 'code alongs'.
+
+## Setup instructions
 
 1. Clone this repo
 2. Setup a virtual environment and install the requirements, e.g.
