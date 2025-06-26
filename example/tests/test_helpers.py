@@ -1,6 +1,7 @@
 from helpers import square, linspace
 from math import nan, isnan
 import pytest
+import numpy as np
 
 def test_square():
     assert square(0) == 0
@@ -19,4 +20,4 @@ def test_inv():
   ,((0, 1, 2), [0, 1])
   ])
 def test_linspace(value, expected):
-    assert linspace(*value) == expected
+    assert linspace(*value) == np.array(expected)
