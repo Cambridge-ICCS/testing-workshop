@@ -14,4 +14,5 @@ def mean_squared_error(model : ndarray, observed : ndarray) -> float:
         sum += (m - o)**2
       return (1/n) * sum
 
+# todo: get some observational data relating albedo and temperature over time
 observed = [(0.3, 15.5), (0.4, 20.0)]
