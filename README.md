@@ -12,7 +12,7 @@ Training material on testing and correctness
      * Code coverage
 
 ## Session 2 - 1h30
+- 20 minute unit test exercises
 - 15 minutes talking about integration tests
-- 30 minutes exercises
-- 15 minutes introduction to property based testing
-- 30 minutes exercises
+- 20 minutes introduction to property based testing
+- 35 minutes exercises
