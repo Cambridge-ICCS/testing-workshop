@@ -25,7 +25,7 @@ def init():
 ## Energy balance calculations
 def energy_in(albedo : float) -> Annotated[float, "J / s"]:
     """
-        Calculate the incoming energy from the sun 
+        Calculate the incoming energy from the sun
         to the earth system as a function of the Earth's albedo
 
         Input:
@@ -35,7 +35,7 @@ def energy_in(albedo : float) -> Annotated[float, "J / s"]:
     """
     if albedo < 0 or albedo > 1:
         raise ValueError("Albedo must be between 0 and 1")
-        
+
     illuminated_surface_area = pi * square(mean_radius)
     return (solar_constant * illuminated_surface_area * (1 - albedo))
 
@@ -50,6 +50,9 @@ def energy_out(temperature : Annotated[float, "K"]) -> Annotated[float, "J / s"]
         Output:
         - float, the outgoing energy in watts (J / s)
     """
+    if temperature < 0:
+        raise ValueError("Temperature must be a positive value in Kelvin")
+
     emmiting_surface_area = 4 * pi * square(mean_radius)
     return (sigma * temperature**4 * emmiting_surface_area)
 
@@ -77,6 +80,9 @@ def earth_emissivity(albedo: float, temperature: Annotated[float, "K"]) -> float
       Output:
       - float, the emissivity of the Earth (dimensionless)
     """
+    if albedo < 0 or albedo > 1:
+        raise ValueError("Albedo must be between 0 and 1")
+
     return (solar_constant * (1 - albedo))/(4 * sigma  * temperature**4)
 
 def temperature_at_energy_balance(albedo: float, emissivity: float) -> Annotated[float, "K"]:
@@ -90,6 +96,11 @@ def temperature_at_energy_balance(albedo: float, emissivity: float) -> Annotated
         Output:
         - float, the net energy balance in watts (J / s)
     """
+    if albedo < 0 or albedo > 1:
+        raise ValueError("Albedo must be between 0 and 1")
+    if emissivity < 0 or emissivity > 1:
+        raise ValueError("Emissivity must be between 0 and 1")
+
     return ((solar_constant * (1 - albedo)) / (4 * sigma * emissivity)) ** 0.25
 
 def kelvin_to_celsius(temperature: Annotated[float, "K"]) -> Annotated[float, "C"]:
@@ -113,7 +124,7 @@ def plot_temperature_vs_emissivity():
     albedo = 0.3
 
     temperatures = kelvin_to_celsius(temperature_at_energy_balance(albedo, epsilon_var))
-    
+
     plt.plot(epsilon_var, temperatures)
     plt.xlabel('Emissivity')
     plt.ylabel('Temperature (C)')
@@ -131,7 +142,7 @@ def plot_temperature_vs_albedo():
     emissivity = 0.614618
 
     temperatures = kelvin_to_celsius(temperature_at_energy_balance(albedo_var, emissivity))
-    
+
     # Plot from high to low albedo
     plt.plot(albedo_var, temperatures)
     plt.gca().invert_xaxis() # Invert x-axis to show high albedo on the left
