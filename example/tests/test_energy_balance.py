@@ -15,11 +15,12 @@ def test_energy_in_invalid(setup):
     with pytest.raises(ValueError):
         energy_balance.energy_in(albedo)
 
-def test_balance_temperate(setup):
-    albedo = 0.3
-    assert (energy_balance.temperature_at_energy_balance(albedo, 1)
-             == pytest.approx(255.00218, abs=1e-5)), "energy_balance function failed for temperate Earth"
+def test_energy_in(setup):
+    assert energy_balance.energy_in(0.5) == 87348540814.55124
 
 def test_emissivity(setup):
     assert energy_balance.earth_emissivity(0.3, 288) == pytest.approx(0.614618, abs=1e-4)
 
+def test_balance_temperate(setup):
+    # Exercise
+    pass
