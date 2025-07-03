@@ -46,7 +46,7 @@ makes two input-output assertions based on some extremal points for which it is 
 
     Don't forget to run the `init()` function first!
 
-# Property-based testing
+## Property-based testing
 
 1. The `energy_out` function (from the `energy_balance` module) determines
 the energy radiated from the Earth as a function of its temperature (in Kelvin) assuming it is a black body emitter. What is a property that we can always expect of the output? Write a property-based test for this.
