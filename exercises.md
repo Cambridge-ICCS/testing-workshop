@@ -44,11 +44,11 @@ makes two input-output assertions based on some extremal points for which it is 
 
 3. Add a further test of `temperature_at_energy_balance` input-output behaviour by picking some other input values, running the code (i.e., in the repl) to see the output, and then codifying this in a test.
 
-Don't forget to run the `init()` function first!
+    Don't forget to run the `init()` function first!
 
-# Property-based testing
+# Property-based testing
 
 1. The `energy_out` function (from the `energy_balance` module) determines
 the energy radiated from the Earth as a function of its temperature (in Kelvin) assuming it is a black body emitter. What is a property that we can always expect of the output? Write a property-based test for this.
 
-Consider what strategy (generator) to use and how you can provide suitable inputs to the test.
+    Consider what strategy (generator) to use and how you can provide suitable inputs to the test.
