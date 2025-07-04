@@ -3,7 +3,7 @@
 
 <br><br><br><br>
 
-# Workshop on Correctnes and Testing
+# Workshop on Correctness and Testing
 
 ![GitHub](https://img.shields.io/github/license/Cambridge-ICCS/Summer-School-Julia-Tutorial)
 
