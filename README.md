@@ -9,6 +9,8 @@
 
 This is an intensive 2h30 minute workshop on correctness and testing for scientific software, using Python as the demonstration language with the `pytest` framework. It assume that the attendees have programming skills, but not necessarily Python experts. There is some emphasis on scientific computing, with the example being a simple energy balance model (EBM), so it would be beneficial if you have some experience in this field as well though not strictly necessary. 
 
+This material was first delivered at the 2025 ICCS summer school.
+
 ## Session 1 - 1h
 - 10 minute intro about correctness and testing
 - 50 minutes explaining concepts about unit testing including
@@ -27,4 +29,4 @@ This is an intensive 2h30 minute workshop on correctness and testing for scienti
 
 ## Example and exercises.
 
-The `example` folder provides a small 0-dimensional Energy Balance Model for a planet. It contains a test suite in the `tests` directory which is used for demonstration and is the source material for the exercises in `exercises.md`.
+The `example` folder provides a small 0-dimensional Energy Balance Model for a planet (with its main configuration being for Earth). See `example/README.md` for instructions on its usage. It contains a test suite in the `example/tests` directory which is used for demonstration and is the source material for the exercises in `exercises.md`, which also provides setup instructions.
