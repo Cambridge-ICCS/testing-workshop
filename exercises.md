@@ -48,6 +48,20 @@ makes two input-output assertions based on some extremal points for which it is 
 
 4. Turn the above three input-output tests into a 'parameterized' test (see `test_helpers_param.py` for an example) to avoid repetition.
 
+5. (Bonus) Check the coverage of the whole test suite:
+
+```
+pytest tests/ --cov src
+```
+
+You can get a report on which lines are not visited by any tests with:
+
+```
+pytest tests/ --cov src --cov-report term-missing
+```
+
+Choose a section of lines not covered by a test and write an additional test to increase the coverage. Verify that this has improved coverage aftwerwards.
+
 ## Property-based testing
 
 1. The `energy_out` function (from the `energy_balance` module) determines
@@ -66,8 +80,8 @@ point values from `x` to `y` inclusive, evenly spaced, e.g.,
 this as a property based test.
 
 4. Consider what happens when the first two arguments are flipped and
-from this create a further general propery test for linspace. Hint: you
-may also need the `np.flip` function which reverse an array).
+from this create a further general property-based test for linspace. Hint: you
+may also need the `np.flip` function which reverse an array.
 
 ## Extension: Doctests demo and exercise
 
