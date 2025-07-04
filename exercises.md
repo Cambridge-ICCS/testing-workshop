@@ -44,7 +44,9 @@ makes two input-output assertions based on some extremal points for which it is 
 
 3. Add a further test of `temperature_at_energy_balance` input-output behaviour by picking some other input values, running the code (i.e., in the repl) to see the output, and then codifying this in a test.
 
-    Don't forget to run the `init()` function first!
+    Don't forget to run the `init()` function first when experimenting, but use the `setup` text fixture to have this done for you in the tests.
+
+4. Turn the above three input-output tests into a 'parameterized' test (see `test_helpers_param.py` for an example) to avoid repetition.
 
 ## Property-based testing
 
@@ -52,3 +54,21 @@ makes two input-output assertions based on some extremal points for which it is 
 the energy radiated from the Earth as a function of its temperature (in Kelvin) assuming it is a black body emitter. What is a property that we can always expect of the output? Write a property-based test for this.
 
     Consider what strategy (generator) to use and how you can provide suitable inputs to the test.
+
+The `plot_temperature_vs_emissivity()` and `plot_temperature_vs_albedo()` functions generate matplotlib plots and use a custom `linspace` function
+in `helpers.py` where `linspace(x, y, n)` generates a NumPy of `n` floating
+point values from `x` to `y` inclusive, evenly spaced, e.g., 
+
+
+2. Write some post-condition-style property-based tests that relate values in the output to the input arguments. Hint: think about whether arguments should appear in the output, and where, and how the size of the output relates to the arguments.
+
+3. Think of what a valid output should look like for `linspace`. Codify
+this as a property based test.
+
+4. Consider what happens when the first two arguments are flipped and
+from this create a further general propery test for linspace. Hint: you
+may also need the `np.flip` function which reverse an array).
+
+## Extension: Doctests demo and exercise
+
+1. A 'doctest' is a kind of comment that contains an example that is then machine-checked as a test. Navigate to `example/src/doctest_demo.py` to see an example, with explanation, and an in situ exercise.

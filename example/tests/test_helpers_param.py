@@ -13,3 +13,12 @@ def test_square_nan():
 ])
 def test_square_parametrized(value, expected):
     assert square(value) == expected
+
+@pytest.mark.parametrize("value, expected", [
+  ((0, 0, 0), [])
+  ,((10, 10, 0), [])
+  ,((10, 100, 0), [])
+  ,((0, 1, 2), [0, 1])
+  ])
+def test_linspace(value, expected):
+    assert linspace(*value) == np.array(expected)
