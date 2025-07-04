@@ -10,3 +10,22 @@ def test_config_loading():
     energy_balance.init()
     # and that it initializes a global variable
     assert energy_balance.solar_constant is not None, "Solar constant should be initialized"
+
+# Smoke tests for plots
+def test_plots_smoke():
+    # Use non-interactive backend for headless testing
+    import matplotlib
+    matplotlib.use("Agg")  
+    import matplotlib.pyplot as plt
+    import energy_balance 
+    energy_balance.init()
+    try:
+        fig1 = energy_balance.plot_temperature_vs_albedo()
+        assert fig1 is not None, "plot_temperature_vs_albedo function did not return a Figure"
+        fig2 = energy_balance.plot_temperature_vs_emissivity()
+        assert fig2 is not None, "plot_temperature_vs_emissivity function did not return a Figure"
+
+    except Exception as e:
+        assert False, f"Plotting failed with exception: {e}"
+    finally:
+        plt.close('all') 

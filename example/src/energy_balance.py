@@ -123,14 +123,16 @@ def plot_temperature_vs_emissivity():
     epsilon_var = linspace(0.5, 0.7, 50)
     albedo = 0.3
 
-    temperatures = kelvin_to_celsius(temperature_at_energy_balance(albedo, epsilon_var))
+    f = lambda epsilon: temperature_at_energy_balance(albedo, epsilon)
+    temperatures = list(map(f, epsilon_var))
 
-    plt.plot(epsilon_var, temperatures)
+    p = plt.plot(epsilon_var, temperatures)
     plt.xlabel('Emissivity')
     plt.ylabel('Temperature (C)')
     plt.title('Temperature vs Emissivity at Albedo = {}'.format(albedo))
     plt.grid()
     plt.show()
+    return p
 
 def plot_temperature_vs_albedo():
     """
@@ -141,13 +143,15 @@ def plot_temperature_vs_albedo():
     albedo_var = linspace(0.294, 0.286, 50)
     emissivity = 0.614618
 
-    temperatures = kelvin_to_celsius(temperature_at_energy_balance(albedo_var, emissivity))
+    f = lambda albedo: temperature_at_energy_balance(albedo, emissivity)
+    temperatures = list(map(f, albedo_var))
 
     # Plot from high to low albedo
-    plt.plot(albedo_var, temperatures)
+    p = plt.plot(albedo_var, temperatures)
     plt.gca().invert_xaxis() # Invert x-axis to show high albedo on the left
     plt.xlabel('Albedo')
     plt.ylabel('Temperature (C)')
     plt.title('Temperature vs Albedo at Emissivity = {}'.format(emissivity))
     plt.grid()
     plt.show()
+    return p
