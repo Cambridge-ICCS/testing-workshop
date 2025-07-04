@@ -1,4 +1,5 @@
 matplotlib
+numpy>=2
 pandas
 pytest
 pytest-cov
