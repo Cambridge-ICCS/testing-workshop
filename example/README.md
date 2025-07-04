@@ -13,7 +13,7 @@ python3 -m venv venv
 source venv/bin/activate
 python3 -m pip install -r requirements.txt
 ```
-3. You can then run the tests (some of which are expected to fail) by running:
+3. You can then run the tests by running:
 ```
 pytest tests
 ```
