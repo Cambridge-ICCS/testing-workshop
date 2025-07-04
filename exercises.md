@@ -4,14 +4,14 @@
 
 1. Clone the workshop repo and navigate to the `example` directory
 
-```
+```bash
 git clone https://github.com/Cambridge-ICCS/testing-workshop
 cd testing-workshop/exmaple
 ```
 
 2. Setup a virtual environment (optional step) and install the dependencies:
 
-```
+```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -19,13 +19,13 @@ pip install -r requirements.txt
 
 3. (Optional) To make it easy to import the Python module for exploration, set the `PYTHONPATH` to include the `src` directory:
 
-```
-export set PYTHONPATH=$PYTHONPATH:$(pwd)/src 
+```bash
+export PYTHONPATH=$PYTHONPATH:$(pwd)/src
 ```
 
 4. Make sure you can run the smoke tests to check all is working well:
 
-```
+```bash
 pytest tests/smoke_test.py
 ```
 
@@ -33,7 +33,7 @@ pytest tests/smoke_test.py
 
 1. Run the unit tests in `test_energy_balance.py`
 
-```
+```bash
 pytest tests/test_energy_balance.py
 ```
 
@@ -50,15 +50,21 @@ makes two input-output assertions based on some extremal points for which it is 
 
 5. (Bonus) Check the coverage of the whole test suite:
 
-```
+```bash
 pytest tests/ --cov src
 ```
 
 You can get a report on which lines are not visited by any tests with:
 
-```
+```bash
 pytest tests/ --cov src --cov-report term-missing
 ```
+
+Or if you prefer more visual report, you can try to generate HTML report
+```bash
+pytest tests/ --cov src --cov-report html
+```
+this will generate `htmlcov` folder where you can see the report in your browser by opening `htmlcov/index.html`
 
 Choose a section of lines not covered by a test and write an additional test to increase the coverage. Verify that this has improved coverage aftwerwards.
 
@@ -71,7 +77,7 @@ the energy radiated from the Earth as a function of its temperature (in Kelvin) 
 
 The `plot_temperature_vs_emissivity()` and `plot_temperature_vs_albedo()` functions generate matplotlib plots and use a custom `linspace` function
 in `helpers.py` where `linspace(x, y, n)` generates a NumPy of `n` floating
-point values from `x` to `y` inclusive, evenly spaced, e.g., 
+point values from `x` to `y` inclusive, evenly spaced. Now for the `linspace` function:
 
 
 2. Write some post-condition-style property-based tests that relate values in the output to the input arguments. Hint: think about whether arguments should appear in the output, and where, and how the size of the output relates to the arguments.

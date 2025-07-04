@@ -3,6 +3,9 @@ import numpy as np
 from math import nan, isnan
 import pytest
 
+from hypothesis import given
+from hypothesis.strategies import floats, composite, integers
+
 def test_square_nan():
     assert isnan(square(nan))
 
@@ -24,3 +27,11 @@ def test_square_parametrized(value, expected):
 def test_linspace(value, expected):
     # test equality of the two arrays
     np.array_equal(linspace(*value), np.array(expected))
+
+
+# Uncomment for "property-based testing" exercises 2-4
+#
+# @given(...)
+# def test_linspace_property(...):
+#     # Write your property here
+#     pass
