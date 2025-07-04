@@ -1,4 +1,5 @@
-from helpers import square
+from helpers import square, linspace
+import numpy as np
 from math import nan, isnan
 import pytest
 
@@ -21,4 +22,5 @@ def test_square_parametrized(value, expected):
   ,((0, 1, 2), [0, 1])
   ])
 def test_linspace(value, expected):
-    assert linspace(*value) == np.array(expected)
+    # test equality of the two arrays
+    np.array_equal(linspace(*value), np.array(expected))
