@@ -13,6 +13,6 @@ Training material on testing and correctness
 
 ## Session 2 - 1h30
 - 20 minute unit test exercises
-- 15 minutes talking about integration tests
+- 20 minutes talking about integration tests
 - 20 minutes introduction to property based testing
-- 35 minutes exercises
+- 30 minutes property-based test exercises
