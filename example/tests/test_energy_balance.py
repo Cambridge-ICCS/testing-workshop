@@ -31,10 +31,9 @@ def test_balance_temperate(setup):
 
 
 # Uncomment for "property-based testing" exercise 1
-#
-# @given(...)
-# def test_energy_out_property():
-#     # Note that we cannot use fixtures in `hypothesis` based tests
+# def test_energy_out_property(albedo):
+#     # Using fixtures with `hypothesis` based tests requires a bit more work
+#     # so you can just use initialization directly
 #     energy_balance.init()
 #     # Put your property based test here
 #     ...
