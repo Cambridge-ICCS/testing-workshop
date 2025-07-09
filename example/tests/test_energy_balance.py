@@ -3,6 +3,10 @@ from testing import setup
 import pytest
 from math import pi
 
+# Will be needed for the property-based tests
+from hypothesis import given
+from hypothesis.strategies import floats
+
 def test_energy_in_albedo_max(setup):
     assert energy_balance.energy_in(1) == 0
 
@@ -24,3 +28,12 @@ def test_emissivity(setup):
 def test_balance_temperate(setup):
     # Exercise
     pass
+
+
+# Uncomment for "property-based testing" exercise 1
+# def test_energy_out_property(albedo):
+#     # Using fixtures with `hypothesis` based tests requires a bit more work
+#     # so you can just use initialization directly
+#     energy_balance.init()
+#     # Put your property based test here
+#     ...

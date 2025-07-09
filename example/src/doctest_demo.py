@@ -39,9 +39,9 @@ def square_me_with_doctest(num: Number) -> Number:
     The full specifications are available in Python documentation
     (https://docs.python.org/3/library/doctest.html)
 
-    In short each time we write `>>>` (python REPL prompt) together with `...`,
-    if it is considered expression spans multiple lines, a code snippet and will
-    be run as part of the doctests.
+    In short each time we write `>>>` (python REPL prompt), together with `...`,
+    if the expression spans multiple lines, a code snippet and will be run
+    as part of the doctests.
 
     So this will execute:
     >>> if True:
