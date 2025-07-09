@@ -46,10 +46,11 @@ def test_msqerror_more(input_data):
 def test_msqerror_invariance(input_data, scale):
     # Scale invariance
     model_data, obs_data = input_data
-    scaled_mse = scale**2 * mean_squared_error(model_data, obs_data)
 
-    model_data = scale * np.array(model_data)
-    obs_data = scale * np.array(obs_data)
-    mse_scaled = mean_squared_error(model_data, obs_data)
+    model_data_scaled = scale * np.array(model_data)
+    obs_data_scaled = scale * np.array(obs_data)
+    mse_scaled = mean_squared_error(model_data_scaled, obs_data_scaled)
+
+    scaled_mse = scale**2 * mean_squared_error(model_data, obs_data)
 
     assert np.isclose(mse_scaled, scaled_mse)
