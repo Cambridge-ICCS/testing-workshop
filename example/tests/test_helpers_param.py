@@ -5,7 +5,8 @@ import pytest
 
 # Will be needed for the property-based tests
 from hypothesis import given
-from hypothesis.strategies import floats, composite, integers
+from hypothesis.strategies import floats, composite
+
 
 def test_square_nan():
     assert isnan(square(nan))
