@@ -4,6 +4,8 @@ This is an example used for live demos and 'code alongs'.
 
 ## Setup instructions
 
+Requires Python 3.9 and above.
+
 1. Clone this repo
 2. Setup a virtual environment and install the requirements, e.g.
 
