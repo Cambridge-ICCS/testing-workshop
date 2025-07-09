@@ -32,12 +32,6 @@ def test_emissivity(setup):
         0.614618, abs=1e-4
     )
 
-
-def test_balance_temperate(setup):
-    # Exercise
-    pass
-
-
 # Uncomment for "property-based testing" exercise 1
 # def test_energy_out_property(albedo):
 #     # Using fixtures with `hypothesis` based tests requires a bit more work

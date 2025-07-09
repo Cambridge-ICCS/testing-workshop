@@ -1,7 +1,6 @@
 # Some common package checks
 def test_initialization():
     from energy_balance import __init__ as package_init
-
     assert package_init is not None, "Package initialization failed"
 
 

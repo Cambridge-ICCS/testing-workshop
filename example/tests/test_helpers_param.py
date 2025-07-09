@@ -27,11 +27,16 @@ def test_square_parametrized(value, expected):
 
 @pytest.mark.parametrize(
     "value, expected",
-    [((0, 0, 0), []), ((10, 10, 0), []), ((10, 100, 0), []), ((0, 1, 2), [0, 1])],
+    [
+        ((0, 0, 0), [])
+     , ((10, 10, 0), [])
+     , ((10, 100, 0), [])
+     , ((0, 1, 2), [0, 1])
+    ],
 )
 def test_linspace(value, expected):
     # test equality of the two arrays
-    np.array_equal(linspace(*value), np.array(expected))
+    assert np.array_equal(linspace(*value), np.array(expected))
 
 
 # Uncomment for "property-based testing" exercises 2-4
