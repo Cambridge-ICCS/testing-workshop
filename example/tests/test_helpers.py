@@ -1,7 +1,6 @@
-from helpers import square, linspace
+from helpers import square
 from math import nan, isnan
-import pytest
-import numpy as np
+
 
 def test_square():
     assert square(0) == 0
@@ -10,5 +9,6 @@ def test_square():
     assert square(-3) == 9
     assert isnan(square(nan))
 
+
 def test_inv():
-    assert square(4)**(0.5) == 4
+    assert square(4) ** (0.5) == 4

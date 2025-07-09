@@ -8,38 +8,48 @@ import numpy as np
 
 # Composite strategies
 
+
 @composite
 def myfloat(draw):
-  return draw(floats(allow_infinity=False, allow_nan=False, min_value = -1E10, max_value = 1E10))
+    return draw(
+        floats(allow_infinity=False, allow_nan=False, min_value=-1e10, max_value=1e10)
+    )
+
 
 @composite
 def lists_of_same_length(draw):
-  list1 = draw(lists(myfloat()))
-  list2 = draw(lists(myfloat(), min_size = len(list1), max_size = len(list1)))
-  return list1, list2
+    list1 = draw(lists(myfloat()))
+    list2 = draw(lists(myfloat(), min_size=len(list1), max_size=len(list1)))
+    return list1, list2
+
 
 # Tests
 
+
 @given(lists(floats(allow_infinity=False, allow_nan=False)))
 def test_msqerror_self(input_data):
-  assert mean_squared_error(input_data, input_data) == 0
+    assert mean_squared_error(input_data, input_data) == 0
+
 
 @given(lists_of_same_length())
 def test_msqerror_more(input_data):
-  # positivity
-  model_data, obs_data = input_data
-  assert mean_squared_error(model_data, obs_data) >= 0
-  # commutativity
-  assert mean_squared_error(obs_data, model_data) == mean_squared_error(model_data, obs_data)
+    # positivity
+    model_data, obs_data = input_data
+    assert mean_squared_error(model_data, obs_data) >= 0
+    # commutativity
+    assert mean_squared_error(obs_data, model_data) == mean_squared_error(
+        model_data, obs_data
+    )
+
 
 @given(lists_of_same_length(), myfloat())
 def test_msqerror_invariance(input_data, scale):
-  # Scale invariance
-  model_data, obs_data = input_data
-  scaled_mse = scale**2 * mean_squared_error(model_data, obs_data)
+    # Scale invariance
+    model_data, obs_data = input_data
+    scaled_mse = scale**2 * mean_squared_error(model_data, obs_data)
 
-  model_data = scale * np.array(model_data)
-  obs_data = scale * np.array(obs_data)
-  mse_scaled = mean_squared_error(model_data, obs_data)
+    model_data = scale * np.array(model_data)
+    obs_data = scale * np.array(obs_data)
+    mse_scaled = mean_squared_error(model_data, obs_data)
 
-  assert np.isclose(mse_scaled, scaled_mse)
+    assert np.isclose(mse_scaled, scaled_mse)

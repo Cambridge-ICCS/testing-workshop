@@ -1,7 +1,9 @@
 import numpy as np
 
-def square(x : float) -> float:
-  return (x ** 2.0)
+
+def square(x: float) -> float:
+    return x**2.0
+
 
 def linspace(start: float, stop: float, num: int) -> np.ndarray:
     """
