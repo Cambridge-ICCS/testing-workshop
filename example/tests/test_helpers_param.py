@@ -19,11 +19,18 @@ def test_square_nan():
         (1, 1),
         (4, 16),
         (-1, 1),
+        (-3, 9),
+        (1.5, 2.25),
+        (2.5, 6.25),
+        (3.14, 9.8596),
+        (100, 10000),
+        (-100, 10000),
+        (0.1, 0.01),
+        (0.01, 0.0001),
     ],
 )
 def test_square_parametrized(value, expected):
-    assert square(value) == expected
-
+    assert square(value) == pytest.approx(expected, abs=1e-6), f"Failed for value: {value}"
 
 @pytest.mark.parametrize(
     "value, expected",
