@@ -24,7 +24,7 @@ This material was first delivered at the 2025 ICCS summer school, see the [part 
 
 1. Understand a high-level overview of verification and validation in the context of computational science;
 2. Explain the purpose and limitations of testing, including why testing cannot guarantee the absence of bugs but still increases confidence in code.
-3. Write basic automated unit tests using pytest, including covering edges cases, invalid inputs, and considering the role of numerical respresentation;
+3. Write basic automated unit tests using pytest, including covering edges cases, invalid inputs, and considering the role of numerical representation;
 4. Apply testing best practices, including parameterisation, fixtures, negative tests, and Test-Driven Development (TDD).
 5. Understand integration and end-to-end tests, recognising common interface issues and trade-offs in testing strategies.
 6. Write property-based tests with Hypothesis to generate diverse inputs and define meaningful properties.
@@ -63,6 +63,50 @@ Session 2 - 1h30
     - Integration and end-to-end tests
     - Property-based testing
 - 30 minutes exercises (property-based test exercises)
+
+## Preparation and prerequisites
+
+### Prerequisites
+
+- Basic programming knowledge
+- At least beginner experience in Python, e.g., understanding of
+            - Basic mathematical operations
+            - Writing and running scripts/programs
+            - Writing and using functions
+
+The examples require Python 3.11 and above, and will use pytest. See
+the [installation and setup instructions below](#installation-and-setup).
+
+### Preparation
+
+The workshop exercises involve writing Python code and running tests, so you will need to already have a text editor or IDE (Integrated Development Environment) setup and ready to use. The examples and exercises all use Python 3.
+
+If you require assistance or further information with any of these please reach out to
+us before the session.
+
+## Installation and setup
+
+1. You can obtain the code for the exercises by cloning this repository locally:
+  ```
+  git clone https://github.com/Cambridge-ICCS/testing-workshop.git
+  ```
+
+2. Setup a virtual environment and install the requirements, e.g.
+
+```
+cd example
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+
+3. You can then run the provided tests by running:
+
+```
+pytest tests
+```
+
+The examples and exercises will build from this setup.
 
 ## License
 
