@@ -127,7 +127,7 @@ To contribute back to the repository please first
 [fork it](https://github.com/Cambridge-ICCS/testing-workshop/fork),
 make the necessary changes to fix the problem, and then open a pull request back to
 this repository clearly describing the changes you have made.
-We will then preform a review and merge once ready.
+We will then perform a review and merge once ready.
 
 If you would like support using these materials, adapting them to your needs, or
 delivering them please get in touch either via GitHub or via
