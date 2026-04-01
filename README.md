@@ -36,7 +36,7 @@ This material was first delivered at the 2025 ICCS summer school, see the [part 
 
 The slides are included in this repository in [slides.pdf](https://github.com/Cambridge-ICCS/testing-workshop/blob/main/slides.pdf) (and the Keynote source in [slides.key](https://github.com/Cambridge-ICCS/testing-workshop/blob/main/slides.key)).
 
-The structure of the session for the ICCS summer school version of this workshop is described in more detail in [session-structure.md](https://github.com/Cambridge-ICCS/testing-workshop/blob/session-structure/session-structure.md).
+The structure of the session for the ICCS summer school version of this workshop is described in more detail in [session-structure.md](session-structure.md).
 
 ### Examples and exercises
 
