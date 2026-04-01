@@ -91,7 +91,7 @@ us before the session.
   git clone https://github.com/Cambridge-ICCS/testing-workshop.git
   ```
 
-2. Setup a virtual environment and install the requirements, e.g.
+2. Set up a virtual environment and install the requirements, e.g.
 
 ```
 cd example
