@@ -70,9 +70,9 @@ Session 2 - 1h30
 
 - Basic programming knowledge
 - At least beginner experience in Python, e.g., understanding of
-            - Basic mathematical operations
-            - Writing and running scripts/programs
-            - Writing and using functions
+    - Basic mathematical operations
+    - Writing and running scripts/programs
+    - Writing and using functions
 
 The examples require Python 3.11 and above, and will use pytest. See
 the [installation and setup instructions below](#installation-and-setup).
