@@ -1,4 +1,4 @@
-<img src="https://cambridge-iccs.github.io/assets/images/iccs-logo.png"  width="50%" align="left" style='clear:both'>
+<img src="https://cambridge-iccs.github.io/assets/images/iccs-logo.png"  width="70%" align="left" style='clear:both'>
 
 
 <br><br><br><br>
