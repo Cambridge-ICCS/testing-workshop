@@ -24,7 +24,7 @@ This material was first delivered at the 2025 ICCS summer school, see the [part 
 
 1. Understand a high-level overview of verification and validation in the context of computational science;
 2. Explain the purpose and limitations of testing, including why testing cannot guarantee the absence of bugs but still increases confidence in code.
-3. Write basic automated unit tests using pytest, including covering edges cases, invalid inputs, and considering the role of numerical representation;
+3. Write basic automated unit tests using pytest, including covering edge cases, invalid inputs, and considering the role of numerical representation;
 4. Apply testing best practices, including parameterisation, fixtures, negative tests, and Test-Driven Development (TDD).
 5. Understand integration and end-to-end tests, recognising common interface issues and trade-offs in testing strategies.
 6. Write property-based tests with Hypothesis to generate diverse inputs and define meaningful properties.
