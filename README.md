@@ -7,7 +7,7 @@
 
 ![GitHub](https://img.shields.io/github/license/Cambridge-ICCS/Summer-School-Julia-Tutorial)
 
-This is an intensive 2h30 minute workshop on correctness and testing for scientific software, using Python as the demonstration language with the `pytest` framework. It assumes that the attendees have some programming skills, but are not necessarily Python experts. There is some emphasis on scientific computing, with the example being a simple 0D Energy Balance Model (EBM). It would therefore be beneficial if you have some experience in this field, though not strictly necessary.
+This is a workshop on correctness and testing for scientific software, using Python as the demonstration language with the `pytest` framework. It assumes that the attendees have some programming skills, but are not necessarily Python experts. There is some emphasis on scientific computing, with the example being a simple 0D Energy Balance Model (EBM). It would therefore be beneficial if you have some experience in this field, though not strictly necessary.
 
 This material was first delivered at the 2025 ICCS summer school, see the [part 1](https://www.youtube.com/watch?v=iBra9Fv3jvc&list=PL3PByZO-B6dODVXyQcfKEDnIldqReFryp&index=18) and [part 2 videos](https://www.youtube.com/watch?v=4qc3UOtIRu4&list=PL3PByZO-B6dODVXyQcfKEDnIldqReFryp&index=21).
 
