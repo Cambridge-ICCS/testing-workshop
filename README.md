@@ -17,7 +17,7 @@ specification / model. One well-established lightweight technique for evaluating
 software correctness is _testing_, where additional code is written that provides a
 partial specification of program behaviour.
 
-This workshop course, studies the
+This workshop studies the
 foundations of software testing, including the use of tools to automate the
 deployment of tests. We will specifically look at the mechanics of, and best practices
 for, three kinds of tests: unit tests, integration tests, and property-based tests. The
