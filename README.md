@@ -7,7 +7,29 @@
 
 ![GitHub](https://img.shields.io/github/license/Cambridge-ICCS/Summer-School-Julia-Tutorial)
 
-This is a workshop on correctness and testing for scientific software, using Python as the demonstration language with the `pytest` framework. It assumes that the attendees have some programming skills, but are not necessarily Python experts. There is some emphasis on scientific computing, with the example being a simple 0D Energy Balance Model (EBM). It would therefore be beneficial if you have some experience in this field, though not strictly necessary.
+Many of us will have had the experience of bugs in our code, that is, mistakes that
+impact the intended function and functioning of our software. Such mistakes slow
+down development, impinge on collaboration, reduce the likelihood of our code
+being used by others, and in the scientific context can lead to serious mistakes in
+publications. Approaches to software verification are therefore useful to help reduce
+the occurrence of bugs and assess whether code implements its intended
+specification / model. One well-established lightweight technique for evaluating
+software correctness is _testing_, where additional code is written that provides a
+partial specification of program behaviour.
+
+This workshop course, studies the
+foundations of software testing, including the use of tools to automate the
+deployment of tests. We will specifically look at the mechanics of, and best practices
+for, three kinds of tests: unit tests, integration tests, and property-based tests. The
+first two are more widely deployed already in science whereas the third technique
+(property-based testing) is still an underutilised, but powerful, tool.
+
+Python is used for running examples and exercises, with the `pytest` framework, 
+but the concepts can be applied in almost
+any programming language. We will point to resources for a few other languages
+popular in science such as Fortran.
+
+It assumes that the attendees have some programming skills, but are not necessarily Python experts. There is some emphasis on scientific computing, with the example being a simple 0D Energy Balance Model (EBM). It would therefore be beneficial if you have some experience in this field, though not strictly necessary.
 
 This material was first delivered at the 2025 ICCS summer school, see the [part 1](https://www.youtube.com/watch?v=iBra9Fv3jvc&list=PL3PByZO-B6dODVXyQcfKEDnIldqReFryp&index=18) and [part 2 videos](https://www.youtube.com/watch?v=4qc3UOtIRu4&list=PL3PByZO-B6dODVXyQcfKEDnIldqReFryp&index=21).
 
