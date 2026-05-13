@@ -19,7 +19,7 @@ partial specification of program behaviour.
 
 This workshop studies the
 foundations of software testing, including the use of tools to automate the
-deployment of tests. We will specifically look at the mechanics of, and best practices
+deployment of tests. It specifically looks at the mechanics of, and best practices
 for, three kinds of tests: unit tests, integration tests, and property-based tests. The
 first two are more widely deployed already in science whereas the third technique
 (property-based testing) is still an underutilised, but powerful, tool.
