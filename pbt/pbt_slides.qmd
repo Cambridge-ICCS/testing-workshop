@@ -1,0 +1,159 @@
+---
+title: "Property-Based Testing (PBT)"
+format: 
+    revealjs:
+        logo: images/logo.png
+        footer: "Property-Based Testing"
+        slide-number: c/t
+---
+
+## Introduction
+
+```{.python}
+def test_square():
+    assert square(0) == 0
+    assert square(1) == 1
+    assert square(4) == 16
+    assert square(-1) == 1
+    assert isnan(square(nan))
+```
+
+- Does this scale?
+- Similar corner cases
+    - int: `0`, `-1`, `MIN_INT`, `MAX_INT`, ...
+    - float: `±0.0`, `±∞`, `NaN`, ...
+    - lists: `[]`, `[1]`, ...
+- Can we make this more systematic?
+
+## Property-based testing basics
+
+- Base tests on properties of our functions:
+
+```{.python}
+def property(l : list[float]):
+    assert (reverse(reverse(l)) == l)
+```
+
+![](images/PBT_basics.drawio.png){fig-align="center"}
+
+- Run arbitrarily large number of tests automatically
+- Counter examples &harr; Shrinking
+- Original PBT $\Rightarrow$ QuickCheck (Haskell)
+
+
+
+## Python `hypothesis` library
+
+- Generators are called **strategies**
+
+```{.python}
+from hypothesis import given
+from hypothesis.strategies import floats, lists
+
+@given(lists(floats()))
+def test_prop(input):
+    assert (reverse(reverse(input)) == input)
+```
+
+- Strategies can be adapted:
+
+```{.python}
+@given(floats(allow_infinity = False, allow_nan = False))
+...
+
+@given(integers().filter(lambda n: n != 0))
+...
+```
+
+## Custom strategies
+
+```{.python}
+from hypothesis.strategies import given, integers, composite
+
+@composite
+def ordered_pairs(draw):                        # <1>
+    n1 = draw(integers())
+    n2 = draw(integers(min_value=n1))        # <2>
+    return (n1, n2)
+
+@given(ordered_pairs())                         # <3>
+def test_pairs_are_ordered(pair):
+    n1, n2 = pair
+    assert n1 <= n2
+```
+
+1. `draw` allows to _draw_ random values from other strategies
+2. `n2` depends on the value of `n1`
+3. Can use custom stragies like built-in one
+
+## What makes a _good_ property?
+
+- Avoid replicating implementation
+
+```{.python}
+def max(a : int, b : int) -> int:
+    if a < b:
+        return b
+    else: return a
+
+@given(integers(), integers())
+def test_max(a, b):
+    res = max(a, b)
+    assert b if a < b else a
+```
+
+. . .
+
+<div style="height: 1em;"></div>
+
+```{.python}
+def test_max(a, b):
+    res = max(a, b)
+    assert res >= a and res >= b
+```
+
+--- 
+
+- Think in terms of **postconditions** 
+    - Relationship between inputs and outputs
+    - What is true after the function returns?
+
+
+```{.python}
+@given(lists(floats()))
+def test_prop(input):
+    res = sort(input)
+    assert Counter(input) == Counter(res)
+```
+
+- Algebraic properties: Involution, Commutativity, Associativity, Unitality?
+
+```{.python}
+@given(integers(), integers())
+def test_max(a, b):
+    res1 = max(a, b)
+    res2 = max(b, a)
+    assert res1 == res2
+```
+
+---
+
+- Metamorphic properties
+    - Often informed by the domain
+        - Conservation of mass/momentum/energy, ...
+    - Invariances
+    - Symmetries
+
+## Final thoughts
+
+- PBT is very powerful
+    - used in many different domains: telecommunication software, election software, compilers, language runtimes, ...
+    - easy to use in CI (regression testing)
+
+- Should be combined with other approaches
+- Custom generators + shrinkers (active research)
+- Frameworks exists in most languages
+
+## Thank you! {.center}
+
+Happy testing 😄
