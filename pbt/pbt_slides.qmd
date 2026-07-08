@@ -23,15 +23,15 @@ def test_square():
     - int: `0`, `-1`, `MIN_INT`, `MAX_INT`, ...
     - float: `±0.0`, `±∞`, `NaN`, ...
     - lists: `[]`, `[1]`, ...
-- Can we make this more systematic?
+- Can we make this more systematic / automate it?
 
 ## Property-based testing basics
 
 - Base tests on properties of our functions:
 
 ```{.python}
-def property(l : list[float]):
-    assert (reverse(reverse(l)) == l)
+def property(l : list[float]) -> bool:
+    return reverse(reverse(l)) == l
 ```
 
 ![](images/PBT_basics.drawio.png){fig-align="center"}
@@ -112,6 +112,10 @@ def test_max(a, b):
     assert res >= a and res >= b
 ```
 
+. . .
+
+- ties in with _differential testing_
+
 --- 
 
 - Think in terms of **postconditions** 
@@ -123,7 +127,7 @@ def test_max(a, b):
 @given(lists(floats()))
 def test_prop(input):
     res = sort(input)
-    assert Counter(input) == Counter(res)
+    assert len(input) == len(res)
 ```
 
 - Algebraic properties: Involution, Commutativity, Associativity, Unitality?

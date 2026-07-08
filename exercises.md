@@ -6,7 +6,7 @@
 
 ```bash
 git clone https://github.com/Cambridge-ICCS/testing-workshop
-cd testing-workshop/exmaple
+cd testing-workshop/example
 ```
 
 2. Setup a virtual environment (optional step) and install the dependencies:
@@ -70,24 +70,29 @@ Choose a section of lines not covered by a test and write an additional test to 
 
 ## Property-based testing
 
+Documentation of `hypothesis` library: [https://hypothesis.readthedocs.io/](https://hypothesis.readthedocs.io/)
+
 1. The `energy_out` function (from the `energy_balance` module) determines
 the energy radiated from the Earth as a function of its temperature (in Kelvin) assuming it is a black body emitter. What is a property that we can always expect of the output? Write a property-based test for this.
 
     Consider what strategy (generator) to use and how you can provide suitable inputs to the test.
+
+2. The `observation` module defines a method `mean_squared_error` to calculate the [MSE](https://en.wikipedia.org/wiki/Mean_squared_error) between values obtained from simulation and observation. Try to think of a property that must always hold for the output of this function. (NB: You probably will have to define a custom strategy for the input of this function as well)
 
 The `plot_temperature_vs_emissivity()` and `plot_temperature_vs_albedo()` functions generate matplotlib plots and use a custom `linspace` function
 in `helpers.py` where `linspace(x, y, n)` generates a NumPy of `n` floating
 point values from `x` to `y` inclusive, evenly spaced. Now for the `linspace` function:
 
 
-2. Write some post-condition-style property-based tests that relate values in the output to the input arguments. Hint: think about whether arguments should appear in the output, and where, and how the size of the output relates to the arguments. Hint 2: remember that you can limit the range of generated floats with `max_value` and `min_value` keyword arguments to the generator.
+3. Write some post-condition-style property-based tests that relate values in the output to the input arguments. Hint: think about whether arguments should appear in the output, and where, and how the size of the output relates to the arguments. Hint 2: remember that you can limit the range of generated floats with `max_value` and `min_value` keyword arguments to the generator.
 
-3. Think of what a valid output should look like for `linspace`. Codify
+4. Think of what a valid output should look like for `linspace`. Codify
 this as a property based test.
 
-4. Consider what happens when the first two arguments are flipped and
+5. Consider what happens when the first two arguments are flipped and
 from this create a further general property-based test for linspace. Hint: you
 may also need the `np.flip` function which reverse an array.
+
 
 ## Extension: Doctests demo and exercise
 
