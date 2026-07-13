@@ -18,7 +18,8 @@ pip install -r requirements.txt
 ```
 At least Python 3.13 is recommended. If you have multiple Pythons installed you may need to specify which explicitly, e.g., `python3.14 -m venv venv`.
 
-3. (Optional) To make it easy to import the Python module for exploration, set the `PYTHONPATH` to include the `src` directory:
+3. (Optional) To make it possible to import the Python module from the python
+REPL, e.g.,for exploration, set the `PYTHONPATH` to include the `src` directory:
 
 ```bash
 export PYTHONPATH=$PYTHONPATH:$(pwd)/src
@@ -38,16 +39,20 @@ pytest tests/smoke_test.py
 pytest tests/test_energy_balance.py
 ```
 
-The `temperature_at_energy_balance` takes two (float) arguments, one for __albedo__ of the Earth (i.e., a value between 0 and 1) and one for the __emissivity__ (ratio of radiation actually emitted versus energy emitted if it were a true black body).
+The `temperature_at_energy_balance` function from the `energy_balance` module takes two (float) arguments, one for __albedo__ of the Earth (i.e., a value between 0 and 1) and one for the __emissivity__ (ratio of radiation actually emitted versus energy emitted if it were a true black body).
+
+  Don't forget to provide `setup` as argument to your test function to get the `setup` test fixture.
 
 2. Write a unit test for `temperature_at_energy_balance` that
-makes two input-output assertions based on some extremal points for which it is possible to work out what the behaviour without running the code.
+makes an input-output assertion based on some extremal point(s) for which it is possible to work out the expected behaviour without running the code.
 
 3. Add a further test of `temperature_at_energy_balance` input-output behaviour by picking some other input values, running the code (i.e., in the repl) to see the output, and then codifying this in a test.
 
     Don't forget to run the `init()` function first when experimenting, but use the `setup` text fixture to have this done for you in the tests.
 
-4. Turn the above three input-output tests into a 'parameterized' test (see `test_helpers_param.py` for an example) to avoid repetition.
+    You may want to approximate the value and add some relative tolerance in the unit test check.
+
+4. Turn the above input-output tests into a 'parameterized' test (see `test_helpers_param.py` for an example) to avoid repetition.
 
 5. (Bonus) Check the coverage of the whole test suite:
 
@@ -67,7 +72,7 @@ pytest tests/ --cov src --cov-report html
 ```
 this will generate `htmlcov` folder where you can see the report in your browser by opening `htmlcov/index.html`
 
-Choose a section of lines not covered by a test and write an additional test to increase the coverage. Verify that this has improved coverage aftwerwards.
+Choose a section of lines not covered by a test and write an additional test to increase the coverage. Verify that this has improved coverage afterwards.
 
 ## Property-based testing
 
