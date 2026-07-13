@@ -7,12 +7,37 @@ from hypothesis.strategies import floats, integers, tuples
 
 ## Unit testing exercises
 
-## Question 2
+### Question 2
 
+def test_temp_at_extreme(setup):
+    assert energy_balance.temperature_at_energy_balance(1, 0.1) == 0
+
+### Question 3
+
+def test_temp_at_point(setup):
+    assert energy_balance.temperature_at_energy_balance(0.5, 0.1) == pytest.approx(416.88, rel=1e-4)
+
+### Question 4
+
+@pytest.mark.parametrize(
+        "albedo, expected",
+        [
+              (1, 0)
+            , (0.5, 416.88)
+        ]
+)
+def test_temp_parm(setup, albedo, expected):
+    assert energy_balance.temperature_at_energy_balance(albedo, 0.1) == pytest.approx(expected, rel=1e-4)
+
+### Question 5
+
+# We would want more tests than this, but this would improve the coverage
+def test_energy_out(setup):
+    assert energy_balance.energy_out(0) == 0
 
 ## Property-based testing exercises
 
-## Question 1 
+## Question 1
 
 @given(temperature = floats(min_value = 0, max_value = 1E20))
 def test_energy_out_property(temperature):
