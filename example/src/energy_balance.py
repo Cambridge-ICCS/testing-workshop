@@ -101,7 +101,7 @@ def temperature_at_energy_balance(
 
     Input:
     - albedo: float, the fraction of solar energy reflected by the Earth (0 to 1)
-    - emissivity: float, the emissivity of the Earth (dimensionless)
+    - emissivity: float, the emissivity ratio of the Earth (dimensionless)
     Output:
     - float, the net energy balance in watts (J / s)
     """
