@@ -5,6 +5,8 @@ import pytest
 from hypothesis import given
 from hypothesis.strategies import floats, integers, tuples
 
+import numpy as np
+
 ## Unit testing exercises
 
 ### Question 2
@@ -59,3 +61,20 @@ def test_linspace_property(inp):
     space = linspace(starter,ender,count)
     assert space[0] == starter
     assert space[-1] == ender
+
+## Question 3
+
+@given(tuples(floats(allow_infinity=False,allow_nan=False), integers(min_value=2,max_value=1000)))
+def test_linspace_size(inp):
+    ender, counter = inp
+    space = linspace(0, ender, counter)
+    assert len(space) == counter
+
+## Question 4
+
+@given(tuples(floats(allow_infinity=False,allow_nan=False), integers(min_value=2,max_value=1000)))
+def test_linspace_mirror(inp):
+    ender, counter = inp
+    space1 = linspace(0, ender, counter)
+    space2 = linspace(ender, 0, counter)
+    assert np.allclose(space1, np.flip(space2), rtol=1e-4)

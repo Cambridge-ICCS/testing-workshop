@@ -17,4 +17,17 @@ def linspace(start: float, stop: float, num: int) -> np.ndarray:
     Output:
     - list[float], a list of evenly spaced numbers
     """
-    return np.array([start + i * (stop - start) / (num - 1) for i in range(num)])
+    if num <= 0:
+        return np.array([])
+    if num == 1:
+        return np.array([start])
+
+    step = (stop - start) / (num - 1)
+    values = np.empty(num, dtype=float)
+    values[0] = start
+    values[-1] = stop
+
+    for index in range(1, num - 1):
+        values[index] = start + index * step
+
+    return values
