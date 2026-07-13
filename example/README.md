@@ -1,21 +1,9 @@
 # Testing workshop examples 
 
-This is an example used for live demos and 'code alongs'.
+This is an example project used for live demos, 'code alongs', and the exercises.
 
-## Setup instructions
+[Installation instructions](https://github.com/Cambridge-ICCS/testing-workshop/blob/main/README.md#installation-and-setup) can be found in the main README for this repo.
 
-Requires Python 3.9 and above.
 
-1. Clone this repo
-2. Setup a virtual environment and install the requirements, e.g.
 
-```
-cd example
-python3 -m venv venv
-source venv/bin/activate
-python3 -m pip install -r requirements.txt
-```
-3. You can then run the tests by running:
-```
-pytest tests
 ```
