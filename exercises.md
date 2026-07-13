@@ -16,6 +16,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+At least Python 3.13 is recommended. If you have multiple Pythons installed you may need to specify which explicitly, e.g., `python3.14 -m venv venv`.
 
 3. (Optional) To make it easy to import the Python module for exploration, set the `PYTHONPATH` to include the `src` directory:
 
