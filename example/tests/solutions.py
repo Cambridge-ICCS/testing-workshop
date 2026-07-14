@@ -1,9 +1,10 @@
 import energy_balance
+import observation
 from helpers import linspace
 
 import pytest
 from hypothesis import given
-from hypothesis.strategies import floats, integers, tuples
+from hypothesis.strategies import floats, integers, tuples, lists, composite
 
 import numpy as np
 
@@ -51,7 +52,30 @@ def test_energy_out_property(temperature):
 
 ## Question 2
 
+# Generate two lists of the same length
+@composite
+def same_len_float_lists(draw):
+    list1 = draw(lists(floats(allow_infinity=False, allow_nan=False, min_value=-1e10, max_value=1e10)))
+    list2 = draw(lists(
+        floats(
+            allow_infinity=False, 
+            allow_nan=False, 
+            min_value=-1e10, 
+            max_value=1e10
+        ),
+        min_size=len(list1),
+        max_size=len(list1)
+    ))
+    return (list1, list2)
+
+@given(same_len_float_lists())
+def test_msqerror2(input_data):
+    model_data, obs_data = input_data
+    assert observation.mean_squared_error(model_data, obs_data) >= 0.0
+
 ## Potential answers...
+
+## Question 3
 
 @given(tuples(floats(allow_infinity=False,allow_nan=False), integers(min_value=2,max_value=1000)))
 def test_linspace_property(inp):
@@ -62,7 +86,7 @@ def test_linspace_property(inp):
     assert space[0] == starter
     assert space[-1] == ender
 
-## Question 3
+## Question 4
 
 @given(tuples(floats(allow_infinity=False,allow_nan=False), integers(min_value=2,max_value=1000)))
 def test_linspace_size(inp):
@@ -70,7 +94,7 @@ def test_linspace_size(inp):
     space = linspace(0, ender, counter)
     assert len(space) == counter
 
-## Question 4
+## Question 5
 
 @given(tuples(floats(allow_infinity=False,allow_nan=False), integers(min_value=2,max_value=1000)))
 def test_linspace_mirror(inp):
