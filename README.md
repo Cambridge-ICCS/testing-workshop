@@ -63,9 +63,7 @@ The slides are included in this repository.
 The `example` folder provides a small 0-dimensional Energy Balance Model for a planet (with its main configuration being for Earth). See 
 `example/README.md` for instructions on its usage. It contains a test suite in the `example/tests` directory which is used for demonstration and is the source material for the exercises in `exercises.md`, which also provides setup instructions.
 
-### Worked solutions
-
-Coming soon
+A set of possible solutions is available in [example/tests/solutions.py](https://github.com/Cambridge-ICCS/testing-workshop/blob/eeb3191533c7cb5f17c5572ac5fcabcc59e9089d/example/tests/solutions.py).
 
 ### Session structure of 2025 course
 
